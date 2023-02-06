@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
 
   { path: '/', component: () => import('@/view/home/index.vue') },
-  { path: '/about', component: () => import('@/view/about/index.vue') }
+  { path: '/about', component: () => import('@/view/about/index.vue') },
+  { path: '/:pathMatch(.*)*', component: () => import('@/view/notFound/index.vue') }
 ]
 
 
