@@ -1,14 +1,15 @@
 <template>
-	<nav class="fixed wh-full p-7xl bg-[#ddd]">
-		<div class="flex flex-col gap-5xl">
-			<button class="w-20 h-20" @click="toggleMenu">=</button>
-			<div class="flex h-xl w-fit" v-if="menuVisible">
-				<div class="flex flex-col gap-5xl w-70" >
-					<span class="cursor-pointer" v-for="(item, index) in menuConfig" :key="index" @click="handleItem(index)">{{ item.label }}</span>
-				</div>
-				<div class="flex flex-col gap-5xl w-70 overflow-auto scrollbar" v-if="menuConfig[activeIndex].children">
-					<span class="cursor-pointer" v-for="(item,index) in menuConfig[activeIndex].children" :key="index">{{ item.label }}</span>
-				</div>
+	<nav class="menu-background" v-if="props.visible">
+		<div class="menu-warp">
+			<span class="menu-item" v-for="(item, index) in menuConfig" :key="index" @click="handleItem(index)">{{
+				item.label
+			}}</span>
+		</div>
+		<div class="menu-warp scrollbar" v-if="menuConfig[activeIndex].children">
+			<div class="menu-children-warp">
+				<span class="menu-item" v-for="(item, index) in menuConfig[activeIndex].children" :key="index">{{
+					item.label
+				}}</span>
 			</div>
 		</div>
 	</nav>
@@ -16,18 +17,53 @@
 
 <script setup>
 import { ref } from 'vue';
-import {menuConfig} from '@/config/menu'
+import { menuConfig } from '@/config/menu';
 
-const menuVisible = ref(false);
-
-function toggleMenu() {
-	menuVisible.value = !menuVisible.value;
-}
-
-const activeIndex = ref(0)
+const activeIndex = ref(0);
 function handleItem(index) {
-	activeIndex.value= index
+	activeIndex.value = index;
 }
+
+const props = defineProps({
+	visible: Boolean,
+});
 </script>
 
-<style scoped></style>
+<style scoped lang="less">
+.menu-background {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding: 120px 144px;
+	background-color: var(--bg-color);
+}
+.menu-warp {
+	display: flex;
+	flex-direction: column;
+	gap: var(--menu-item-gap);
+	margin-top: calc(var(--menu-item-gap) * 2);
+	height: 400px;
+	width: 17.5rem;
+	overflow: auto;
+
+	&:has(.menu-children-warp) {
+		justify-content: center;
+	}
+	.menu-children-warp {
+		display: flex;
+		flex-direction: column;
+		gap: var(--menu-item-gap);
+		min-width: fit-content;
+		max-height: 100%;
+	}
+	.menu-item {
+		cursor: pointer;
+		&:hover,
+		&:active,
+		&.active {
+			color: var(--text-color-active);
+		}
+	}
+}
+</style>

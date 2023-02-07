@@ -3,16 +3,16 @@ export const menuConfig =
 		{
 			label: "Portfolio",
 			children: [
-				{ label: "work-1",path:'' },
-				{ label: "work-2",path:'' },
-				{ label: "work-3",path:'' },
-				{ label: "work-4",path:'' },
-				{ label: "work-5",path:'' },
-				{ label: "work-6",path:'' },
-				{ label: "work-7",path:'' },
-				{ label: "work-8",path:'' },
-				{ label: "work-9",path:'' },
-				{ label: "work-10",path:'' },
+				{ label: "work-1", path: '' },
+				{ label: "work-2", path: '' },
+				{ label: "work-3", path: '' },
+				{ label: "work-4", path: '' },
+				{ label: "work-5", path: '' },
+				{ label: "work-6", path: '' },
+				{ label: "work-7", path: '' },
+				{ label: "work-8", path: '' },
+				{ label: "work-9", path: '' },
+				{ label: "work-10", path: '' },
 			]
 		},
 		{
@@ -29,8 +29,14 @@ export const menuConfig =
 				{ label: "work-19", path: '' },
 				{ label: "work-20", path: '' },
 			]
-},
-		{ label: "Exhibition" },
+		},
+		{
+			label: "Exhibition", children: [
+				{ label: "2011", path: '' },
+				{ label: "2022", path: '' },
+
+			]
+		},
 		{ label: "Profile" },
 		{ label: "Context" }
 	]
