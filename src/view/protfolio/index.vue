@@ -19,11 +19,14 @@ const router = useRouter();
 const title = 'Portfolio';
 
 function handleDetail(item) {
-	const {label,path} = item
+	const { label, path, info, description } = item;
 	router.push({
 		path: 'detail',
 		query: {
-			label,path
+			label,
+			path,
+			info,
+			description,
 		},
 	});
 }

@@ -1,15 +1,18 @@
-:root{
-	--menu-line-height:1px;
-	--menu-item-gap:7.87vh;
-	--text-color:#000;
-	--text-color-active:#999;
-	--bg-color:#fff;
+:root {
+	--menu-line-height: 1px;
+	--menu-item-gap: 4.95vw;
 
-	--page-top:6.25vw;
-	--page-bottom:5.21vw;
-	--page-left:7.5vw;
-	--page-right:7.5vw;
+	--text-color: #000;
+	--text-color-active: #999;
+	--bg-color: #fff;
 
-	--row-gap:7.71vh;
-	--col-gap:12.5vw;
+	--page-top: 6.25vw;
+	--page-bottom: 5.21vw;
+	--page-left: 7.5vw;
+	--page-right: 7.5vw;
+
+	--row-gap: 7.71vh;
+	--col-gap: 12.5vw;
+
+	--icon-size: 1.56vw;
 }
