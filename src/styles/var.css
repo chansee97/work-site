@@ -1,7 +1,15 @@
 :root{
 	--menu-line-height:1px;
-	--menu-item-gap:3em;
+	--menu-item-gap:7.87vh;
 	--text-color:#000;
 	--text-color-active:#999;
 	--bg-color:#fff;
+
+	--page-top:6.25vw;
+	--page-bottom:5.21vw;
+	--page-left:7.5vw;
+	--page-right:7.5vw;
+
+	--row-gap:7.71vh;
+	--col-gap:12.5vw;
 }

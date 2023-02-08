@@ -1,11 +1,11 @@
 <template>
-	<nav class="menu-background" v-if="props.visible">
+	<nav class="menu-background" v-if="props.modelValue">
 		<div class="menu-warp">
-			<span class="menu-item" v-for="(item, index) in menuConfig" :key="index" @click="handleItem(index)">{{
+			<span class="menu-item" v-for="(item, index) in menuConfig" :key="index" @click="handleItem(item,index)">{{
 				item.label
 			}}</span>
 		</div>
-		<div class="menu-warp scrollbar" v-if="menuConfig[activeIndex].children">
+		<div class="menu-warp scrollbar" v-if="activeIndex && menuConfig[activeIndex].children ">
 			<div class="menu-children-warp">
 				<span class="menu-item" v-for="(item, index) in menuConfig[activeIndex].children" :key="index">{{
 					item.label
@@ -18,15 +18,25 @@
 <script setup>
 import { ref } from 'vue';
 import { menuConfig } from '@/config/menu';
+import { useRouter } from 'vue-router'
 
-const activeIndex = ref(0);
-function handleItem(index) {
+const router = useRouter()
+
+const activeIndex = ref();
+function handleItem(item,index) {
+	const { isDetail, path } = item
+
+	if (path) {
+		router.push(path)
+		emit('update:modelValue',false)
+	}
 	activeIndex.value = index;
 }
 
 const props = defineProps({
-	visible: Boolean,
+	modelValue: Boolean,
 });
+const emit = defineEmits(['update:modelValue'])
 </script>
 
 <style scoped lang="less">
@@ -42,9 +52,9 @@ const props = defineProps({
 	display: flex;
 	flex-direction: column;
 	gap: var(--menu-item-gap);
-	margin-top: calc(var(--menu-item-gap) * 2);
-	height: 400px;
-	width: 17.5rem;
+	margin-top: 114px;
+	height: 500px;
+	width: 360px;
 	overflow: auto;
 
 	&:has(.menu-children-warp) {

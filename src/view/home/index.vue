@@ -1,16 +1,14 @@
 <template>
-  <div class="flex-center h-full">
-    <div class="text-5xl">
-      k a n a s u n
-    </div> <a href="/about">关于我</a>
-  </div>
-
+	<div class="flex-col-center h-full">
+		<div class="text-5xl">k a n a s u n</div>
+		<div>
+			<router-link to="about">about</router-link>
+			<br />
+			<router-link to="protfolio">protfolio</router-link>
+		</div>
+	</div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
