@@ -1,6 +1,6 @@
 <template>
 	<div class="s-img-container">
-		<img src="@/assets/img/work-pic.jpg" alt="" />
+		<img :src="props.src" alt="" />
 		<div class="title">{{ props.title }}</div>
 	</div>
 </template>
