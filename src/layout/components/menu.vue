@@ -1,13 +1,13 @@
 <template>
 	<nav class="menu-background" v-if="props.modelValue">
 		<div class="menu-warp" ref="menuRef">
-			<div class="menu-item" v-for="(item, index) in menuConfig" :key="index" @click="handleItemInOne(item, index)">
+			<div class="menu-item" v-for="(item, index) in menuConfig" :key="index" @mouseover="handleItemInOne(item, index)">
 				{{ item.label }}
 			</div>
 		</div>
-		<div class="menu-lower scrollbar" v-if="activeOneIndex && menuConfig[activeOneIndex].children">
+		<div class="menu-lower scrollbar" v-if="menuConfig[activeOneIndex].children">
 			<div class="menu-warp">
-				<div class="menu-item" v-for="(item, index) in menuConfig[activeOneIndex].children" :key="index" @click="handleItemInTwo(item, index)">
+				<div class="menu-item" v-for="(item, index) in menuConfig[activeOneIndex].children" :key="index" @mouseover="handleItemInTwo(item, index)">
 					{{ item.label }}
 				</div>
 			</div>
@@ -29,24 +29,24 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const activeOneIndex = ref();
+const activeOneIndex = ref(0);
 function handleItemInOne(item, index) {
-	const { isDetail, path, } = item;
-	if (path) {
-		router.push(path);
-		emit('update:modelValue', false);
-	}
 	activeOneIndex.value = index;
+	const { isDetail, path, } = item;
+	// if (path) {
+	// 	router.push(path);
+	// 	emit('update:modelValue', false);
+	// }
 }
 
 const activeTwoIndex = ref();
 function handleItemInTwo(item, index) {
-	const { isDetail, path } = item;
-	if (path) {
-		router.push(path);
-		emit('update:modelValue', false);
-	}
 	activeTwoIndex.value = index;
+	const { isDetail, path } = item;
+	// if (path) {
+	// 	router.push(path);
+	// 	emit('update:modelValue', false);
+	// }
 }
 
 const menuRef = ref();
