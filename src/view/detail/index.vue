@@ -1,43 +1,65 @@
 <template>
 	<div class="detail-container">
-		<div class="detail-single-img" v-if="!detailConfig.description">
-			<img :src="detailConfig.srcPath" :alt="detailConfig.title" />
+		<div class="detail-single-img" v-if="!currentWorks.description">
+			<img :src="currentWorks.srcPath" />
 		</div>
 		<div class="detail-description" v-else>
 			<div class="detail-description-warp scrollbar">
-				<p class="detail-description-content">{{ detailConfig.description }}</p>
+				<p class="detail-description-content">{{ currentWorks.description }}</p>
 			</div>
-			<img :src="detailConfig.srcPath" :alt="detailConfig.title" />
+			<img :src="currentWorks.srcPath" :alt="currentWorks.title" />
 		</div>
-		<div class="detail-title">{{ detailConfig.title }}</div>
+		<div class="detail-arrow">
+			<div class="detail-arrow_left arrow" @click="toggleImage('left')"></div>
+			<div class="detail-arrow_right arrow" @click="toggleImage('right')"></div>
+		</div>
+		<div class="detail-title">{{ currentWorks.title }}</div>
 		<div class="detail-btn-group">
-			<div class="info icon" @click="showInfo = !showInfo" v-if="detailConfig.info">
+			<div class="info icon" @click="showInfo = !showInfo" v-if="currentWorks.info">
 				<transition name="fade-top">
-					<div class="info-content" v-if="showInfo" v-html="detailConfig.info"></div>
+					<div class="info-content" v-if="showInfo" v-html="currentWorks.info"></div>
 				</transition>
 			</div>
-			<div class="full icon"></div>
+			<div class="back icon" @click="backWorksCatalog"></div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { ref ,computed} from 'vue';
+import { ref, computed } from 'vue';
 import { worksConfig } from '@/config';
-import { useGlobalStore } from '@/store';
-import { storeToRefs } from 'pinia';
-import { route } from 'vue-router';
 
-const { query } = route;
-const currentWorks = computed(() => {
-	return worksConfig[query.title].children[query.no]
-})
+import { useRoute, useRouter } from 'vue-router';
 
-const globalStore = useGlobalStore();
+const route = useRoute();
+const router = useRouter();
 
-const { detailConfig } = storeToRefs(globalStore);
-
+const { works, no } = route.query;
+const max = ref(0);
 const showInfo = ref(false);
+
+const currentWorks = computed(() => {
+	const defaultResult = { works, no };
+	const parent = worksConfig[works];
+	max.value = parent.max;
+	return parent?.children[no] ?? defaultResult;
+});
+
+function toggleImage(direction = 'right') {
+	const _no = Number(no)
+	const noResult = () => {
+		if (direction == 'right') {
+			return _no + 1 > max.value ? 0 : _no + 1;
+		}
+		if (direction == 'left') {
+			return _no - 1 < 0 ? max.value : _no - 1;
+		}
+	};
+	router.push({ path: '/detail', query: { works: works, no: noResult() } });
+}
+function backWorksCatalog() {
+	router.push({ path: '/catalog', query: { title: works, pageType: 'works' } });
+}
 </script>
 
 <style lang="less" scoped>
@@ -45,11 +67,37 @@ const showInfo = ref(false);
 	height: 100%;
 	position: relative;
 }
+.detail-arrow {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0 7.5vw; //144
+	display: flex;
+	justify-content: space-between;
+	.arrow {
+		background: url('@/assets/icon/arrow.svg') no-repeat;
+		background-position: center;
+		width: 3.2vw; // 32
+		height: 5.21vw; // 100
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+	.detail-arrow_left:hover {
+		transform: translateX(-30px);
+	}
+	.detail-arrow_right:hover {
+		transform: translateX(30px);
+	}
+}
 .detail-single-img {
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	img {
+		max-height: 48vw; //972px
+	}
 }
 .detail-description {
 	height: 100%;
@@ -57,6 +105,9 @@ const showInfo = ref(false);
 	align-items: center;
 	gap: 14.32vw;
 	padding-left: var(--page-left);
+	img {
+		max-height: 48vw; //972px
+	}
 
 	.detail-description-warp {
 		width: 33.75vw;
@@ -99,8 +150,8 @@ const showInfo = ref(false);
 			width: fit-content;
 		}
 	}
-	.full {
-		background-image: url('@/assets/icon/full.svg');
+	.back {
+		background-image: url('@/assets/icon/back.svg');
 	}
 }
 </style>

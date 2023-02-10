@@ -4,11 +4,11 @@
 		<div class="scroll-wrap">
 			<div class="img-content">
 				<simg
-					v-for="(item,index) in currentCatalog.children"
+					v-for="(item, index) in currentCatalog.children"
 					:key="index"
 					:src="item.srcPath"
 					:title="item.title"
-					@click="handleDetail(item,index)" />
+					@click="handleDetail(item, index)" />
 			</div>
 		</div>
 	</div>
@@ -16,25 +16,42 @@
 
 <script setup>
 import simg from './components/s-img.vue';
-import { useRoute,useRouter } from 'vue-router';
-import { catalogConfig } from '@/config';
+import { useRoute, useRouter } from 'vue-router';
+import { catalogConfig, worksConfig } from '@/config';
 import { computed } from 'vue';
-
 
 const route = useRoute();
 const router = useRouter();
 
-
 const { query } = route;
 const currentCatalog = computed(() => {
-	return catalogConfig[query.title]
-})
+	const { title, pageType } = query;
+	const defaultResult = { title };
+	if (pageType == 'catalog') {
+		return catalogConfig[title] ?? defaultResult;
+	}
+	return worksConfig[title] ?? defaultResult;
+});
 
-function handleDetail(item,index) {
-	const {pageType} = item
-	const handle = {}
-	handle[pageType]()
-	router.push({path:'/detail',query:{works:query.title,no:index}});
+function handleDetail(item, index) {
+	const { pageType } = item;
+
+	const handle = {
+		catalog: () => {
+			router.push({ path: '/catalog', query: { title: item.title, pageType } });
+		},
+		works: () => {
+			router.push({ path: '/catalog', query: { title: item.title, pageType } });
+		},
+		detail: () => {
+			router.push({ path: '/detail', query: { works: query.title, no: index } });
+		},
+	};
+	try {
+		handle[pageType]();
+	} catch (err) {
+		console.log(`错误：${err}`);
+	}
 }
 </script>
 

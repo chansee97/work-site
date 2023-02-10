@@ -39,8 +39,6 @@
 import { ref, computed } from 'vue';
 import { menuConfig } from '@/config/menu';
 import { useRouter } from 'vue-router';
-import { useGlobalStore } from '@/store';
-const globalStore = useGlobalStore();
 
 const router = useRouter();
 
@@ -56,15 +54,15 @@ function handleItemInTwo(index) {
 
 function handleWorkDetail(item) {
 	const { pageType } = item;
-
 	const handle = {
 		catalog: () => {
-			globalStore.catalogConfig = item;
-			router.push({ path: '/catalog', query: {title:item.title} });
+			router.push({ path: '/catalog', query: {title:item.title,pageType} });
+		},
+		works: () => {
+			router.push({ path: '/catalog', query: {title:item.title,pageType} });
 		},
 		detail: () => {
-			globalStore.detailConfig = item;
-			router.push({ path: '/detail', query: {title:item.title} });
+			router.push({ path: '/detail', query: {title:item.title,pageType} });
 		},
 	};
 	try {

@@ -28,7 +28,7 @@ const props = defineProps({
 			color: var(--text-color-active);
 		}
 		img {
-			opacity: 0.5;
+			opacity: 0.4;
 		}
 	}
 	.title {
