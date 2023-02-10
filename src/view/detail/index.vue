@@ -22,13 +22,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
+import { ref ,computed} from 'vue';
+import { worksConfig } from '@/config';
 import { useGlobalStore } from '@/store';
-const { detailConfig } = useGlobalStore();
+import { storeToRefs } from 'pinia';
+import { route } from 'vue-router';
+
+const { query } = route;
+const currentWorks = computed(() => {
+	return worksConfig[query.title].children[query.no]
+})
+
+const globalStore = useGlobalStore();
+
+const { detailConfig } = storeToRefs(globalStore);
 
 const showInfo = ref(false);
-
 </script>
 
 <style lang="less" scoped>
@@ -91,7 +100,7 @@ const showInfo = ref(false);
 		}
 	}
 	.full {
-		background-image: url('@/assets/icon/full-screen.svg');
+		background-image: url('@/assets/icon/full.svg');
 	}
 }
 </style>

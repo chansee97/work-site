@@ -1,14 +1,14 @@
 <template>
 	<div class="page-container">
-		<h1>{{ catalogConfig.title }}</h1>
+		<h1>{{ currentCatalog.title }}</h1>
 		<div class="scroll-wrap">
 			<div class="img-content">
 				<simg
-					v-for="item in catalogConfig.children"
-					:key="item.id"
+					v-for="(item,index) in currentCatalog.children"
+					:key="index"
 					:src="item.srcPath"
 					:title="item.title"
-					@click="handleDetail(item)" />
+					@click="handleDetail(item,index)" />
 			</div>
 		</div>
 	</div>
@@ -16,17 +16,25 @@
 
 <script setup>
 import simg from './components/s-img.vue';
-import { useRouter } from 'vue-router';
-import { useGlobalStore } from '@/store';
+import { useRoute,useRouter } from 'vue-router';
+import { catalogConfig } from '@/config';
+import { computed } from 'vue';
 
-const { catalogConfig } = useGlobalStore();
-const globalStore = useGlobalStore();
 
+const route = useRoute();
 const router = useRouter();
 
-function handleDetail(item) {
-	globalStore.detailConfig = item;
-	router.push('/detail');
+
+const { query } = route;
+const currentCatalog = computed(() => {
+	return catalogConfig[query.title]
+})
+
+function handleDetail(item,index) {
+	const {pageType} = item
+	const handle = {}
+	handle[pageType]()
+	router.push({path:'/detail',query:{works:query.title,no:index}});
 }
 </script>
 

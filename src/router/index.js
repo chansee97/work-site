@@ -7,8 +7,9 @@ const routes = [
 		component: layout,
 		redirect: 'home',
 		children: [
-			{ path: 'home', component: () => import('@/view/home/index.vue') },
+			{ path: '/', component: () => import('@/view/home/index.vue') },
 			{ path: 'about', component: () => import('@/view/about/index.vue') },
+			// { path: '/:catalog', component: () => import('@/view/catalog/index.vue') },
 			{ path: 'catalog', component: () => import('@/view/catalog/index.vue') },
 			{ path: 'detail', component: () => import('@/view/detail/index.vue') },
 		],

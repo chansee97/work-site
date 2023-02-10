@@ -20,9 +20,16 @@ const props = defineProps({
 		width: 14.06vw;
 		height: 16.67vh;
 		object-fit: cover;
+		transition: opacity ease .5s;
+		will-change: opacity;
 	}
-	&:hover .title {
-		color: var(--text-color-active);
+	&:hover {
+		.title {
+			color: var(--text-color-active);
+		}
+		img {
+			opacity: 0.5;
+		}
 	}
 	.title {
 		margin-top: 3.52vh;

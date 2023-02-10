@@ -11,7 +11,11 @@
     </style>
   </defs>
   <g id="_图层_1-2" data-name="图层 1">
-    <circle class="cls-1" cx="17.75" cy="17.75" r="17.5"/>
-    <path d="m17.52,11.66v-2.64h.48v2.64h-.48Zm0,15.36v-12.48h.48v12.48h-.48Z"/>
+    <g>
+      <rect class="cls-1" x=".25" y=".25" width="14" height="14"/>
+      <rect class="cls-1" x="21.25" y=".25" width="14" height="14"/>
+      <rect class="cls-1" x=".25" y="21.25" width="14" height="14"/>
+      <rect class="cls-1" x="21.25" y="21.25" width="14" height="14"/>
+    </g>
   </g>
 </svg>

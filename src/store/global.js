@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+
 export const useGlobalStore = defineStore('globalStore', {
 	// 推荐使用 完整类型推断的箭头函数
 	state: () => {
@@ -9,3 +10,5 @@ export const useGlobalStore = defineStore('globalStore', {
 		};
 	},
 });
+
+// export const globalStore = storeToRefs(useGlobalStore());

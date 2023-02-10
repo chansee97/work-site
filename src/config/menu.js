@@ -20,9 +20,9 @@ export const menuConfig = [
 				info: 'Leg<br/>Cyanotypeonwatercolorpaper<br/>(297cmx420cm)',
 				description: '',
 			},
-			{ title: '思い思われ', srcPath: 'http://placekitten.com/1500/900',pageType: 'detail' },
-			{ title: 'Trace of Life', srcPath: 'https://place.dog/1500/900' ,pageType: 'detail'},
-			{ title: '暁闇', srcPath: 'pic/work-pic.jpg' ,pageType: 'detail'},
+			{ title: '思い思われ', srcPath: 'http://placekitten.com/1500/900', pageType: 'detail' },
+			{ title: 'Trace of Life', srcPath: 'https://place.dog/1500/900', pageType: 'detail' },
+			{ title: '暁闇', srcPath: 'pic/work-pic.jpg', pageType: 'detail' },
 		],
 	},
 	{
