@@ -1,21 +1,34 @@
 <template>
 	<nav class="menu-background" v-if="props.modelValue">
 		<div class="menu-warp" ref="menuRef">
-			<div class="menu-item" v-for="(item, index) in menuConfig" :key="index" @mouseover="handleItemInOne(item, index)">
-				{{ item.label }}
+			<div
+				class="menu-item"
+				v-for="(item, index) in menuConfig"
+				:key="index"
+				@mouseover="handleItemInOne(index)"
+				@click="handleWorkDetail(item)">
+				{{ item.title }}
 			</div>
 		</div>
 		<div class="menu-lower scrollbar" v-if="menuConfig[activeOneIndex].children">
 			<div class="menu-warp">
-				<div class="menu-item" v-for="(item, index) in menuConfig[activeOneIndex].children" :key="index" @mouseover="handleItemInTwo(item, index)">
-					{{ item.label }}
+				<div
+					class="menu-item"
+					v-for="(item, index) in menuConfig[activeOneIndex].children"
+					:key="index"
+					@mouseover="handleItemInTwo(index)"
+					@click="handleWorkDetail(item)">
+					{{ item.title }}
 				</div>
 			</div>
 		</div>
 		<div class="menu-lower scrollbar" v-if="menuConfig[activeOneIndex]?.children?.[activeTwoIndex]?.children">
 			<div class="menu-warp">
-				<div class="menu-item" v-for="(item, index) in menuConfig[activeOneIndex]?.children?.[activeTwoIndex]?.children" :key="index">
-					{{ item.label }}
+				<div
+					class="menu-item"
+					v-for="(item, index) in menuConfig[activeOneIndex]?.children?.[activeTwoIndex]?.children"
+					:key="index">
+					{{ item.title }}
 				</div>
 			</div>
 		</div>
@@ -26,34 +39,46 @@
 import { ref, computed } from 'vue';
 import { menuConfig } from '@/config/menu';
 import { useRouter } from 'vue-router';
+import { useGlobalStore } from '@/store';
+const globalStore  = useGlobalStore()
 
 const router = useRouter();
 
 const activeOneIndex = ref(0);
-function handleItemInOne(item, index) {
+function handleItemInOne(index) {
 	activeOneIndex.value = index;
-	const { isDetail, path, } = item;
-	// if (path) {
-	// 	router.push(path);
-	// 	emit('update:modelValue', false);
-	// }
 }
 
 const activeTwoIndex = ref();
-function handleItemInTwo(item, index) {
+function handleItemInTwo(index) {
 	activeTwoIndex.value = index;
-	const { isDetail, path } = item;
-	// if (path) {
-	// 	router.push(path);
-	// 	emit('update:modelValue', false);
-	// }
 }
 
+function handleWorkDetail(item) {
+	const { pageType } = item;
+
+	const handle = {
+		catalog:()=> {
+			globalStore.catalogConfig = item
+			router.push('/catalog');
+		},
+		detail:()=>{
+			globalStore.detailConfig = item
+			router.push('/detail');
+		},
+	};
+	try {
+		handle[pageType]()
+	} catch (err) {
+		console.log(`错误：${err}`)
+	}
+	emit('update:modelValue', false);
+}
 const menuRef = ref();
 const menuHeight = computed(() => {
-	if(!menuRef.value) return 
+	if (!menuRef.value) return;
 	return menuRef.value.clientHeight + 'px';
-})
+});
 
 const props = defineProps({
 	modelValue: Boolean,

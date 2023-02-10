@@ -1,19 +1,19 @@
 <template>
 	<div class="detail-container">
-		<div class="detail-single-img" v-if="!query.description">
-			<img :src="query.path" :alt="query.label" />
+		<div class="detail-single-img" v-if="!detailConfig.description">
+			<img :src="detailConfig.srcPath" :alt="detailConfig.title" />
 		</div>
 		<div class="detail-description" v-else>
 			<div class="detail-description-warp scrollbar">
-				<p class="detail-description-content">{{ query.description }}</p>
+				<p class="detail-description-content">{{ detailConfig.description }}</p>
 			</div>
-			<img :src="query.path" :alt="query.label" />
+			<img :src="detailConfig.srcPath" :alt="detailConfig.title" />
 		</div>
-		<div class="detail-title">{{ query.label }}</div>
+		<div class="detail-title">{{ detailConfig.title }}</div>
 		<div class="detail-btn-group">
-			<div class="info icon" @click="showInfo = !showInfo" v-if="query.info">
+			<div class="info icon" @click="showInfo = !showInfo" v-if="detailConfig.info">
 				<transition name="fade-top">
-					<div class="info-content" v-if="showInfo" v-html="query.info"></div>
+					<div class="info-content" v-if="showInfo" v-html="detailConfig.info"></div>
 				</transition>
 			</div>
 			<div class="full icon"></div>
@@ -22,11 +22,13 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
 import { ref } from 'vue';
 
+import { useGlobalStore } from '@/store';
+const { detailConfig } = useGlobalStore();
+
 const showInfo = ref(false);
-const { query } = useRoute();
+
 </script>
 
 <style lang="less" scoped>

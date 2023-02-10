@@ -1,9 +1,14 @@
 <template>
 	<div class="page-container">
-		<h1>{{ title }}</h1>
+		<h1>{{ catalogConfig.title }}</h1>
 		<div class="scroll-wrap">
 			<div class="img-content">
-				<simg v-for="item in catalog" :key="item.id" :src="item.path" :title="item.label" @click="handleDetail(item)" />
+				<simg
+					v-for="item in catalogConfig.children"
+					:key="item.id"
+					:src="item.srcPath"
+					:title="item.title"
+					@click="handleDetail(item)" />
 			</div>
 		</div>
 	</div>
@@ -12,34 +17,17 @@
 <script setup>
 import simg from './components/s-img.vue';
 import { useRouter } from 'vue-router';
-import { menuConfig } from '@/config/menu';
-import { onMounted, ref } from 'vue';
+import { useGlobalStore } from '@/store';
+
+const { catalogConfig } = useGlobalStore();
+const globalStore = useGlobalStore();
 
 const router = useRouter();
-const title = 'Portfolio';
 
 function handleDetail(item) {
-	const { label, path, info, description } = item;
-	router.push({
-		path: 'detail',
-		query: {
-			label,
-			path,
-			info,
-			description,
-		},
-	});
+	globalStore.detailConfig = item;
+	router.push('/detail');
 }
-
-const catalog = ref([]);
-function generateCatalog(name) {
-	const filterData = menuConfig.filter((item) => item.label === name);
-	return filterData[0]?.children;
-}
-
-onMounted(() => {
-	catalog.value = generateCatalog(title);
-});
 </script>
 
 <style lang="less" scoped>

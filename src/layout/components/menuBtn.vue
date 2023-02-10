@@ -1,8 +1,5 @@
 <template>
 	<div class="btn-menu" @click="handleClick">
-		<div class="menu-line"></div>
-		<div class="menu-line"></div>
-		<div class="menu-line"></div>
 	</div>
 </template>
 
@@ -18,19 +15,12 @@ function handleClick() {
 .btn-menu {
 	width: 48px;
 	height: 32px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	position: fixed;
 	cursor: pointer;
+	background-image: url('@/assets/icon/menu.svg');
 	top: var(--page-top);
 	left: var(--page-left);
 	z-index: 3;
-	.menu-line {
-		background-color: var(--text-color);
-		width: 100%;
-		height: var(--menu-line-height);
-	}
 }
 
 </style>
