@@ -136,6 +136,7 @@ function backWorksCatalog() {
 	font-size: 20px;
 	bottom: var(--page-bottom);
 	left: var(--page-left);
+	cursor: pointer;
 }
 .detail-btn-group {
 	position: absolute;

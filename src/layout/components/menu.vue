@@ -10,7 +10,7 @@
 				{{ item.title }}
 			</div>
 		</div>
-		<div class="menu-lower scrollbar" v-if="menuConfig[activeOneIndex].children">
+		<div class="menu-lower scrollbar" v-if="activeOneIndex == 0 || menuConfig[activeOneIndex]?.children">
 			<div class="menu-warp">
 				<div
 					class="menu-item"
@@ -42,7 +42,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const activeOneIndex = ref(0);
+const activeOneIndex = ref();
 function handleItemInOne(index) {
 	activeOneIndex.value = index;
 }
@@ -56,13 +56,13 @@ function handleWorkDetail(item) {
 	const { pageType } = item;
 	const handle = {
 		catalog: () => {
-			router.push({ path: '/catalog', query: {title:item.title,pageType} });
+			router.push({ path: '/catalog', query: { title: item.title, pageType } });
 		},
 		works: () => {
-			router.push({ path: '/catalog', query: {title:item.title,pageType} });
+			router.push({ path: '/catalog', query: { title: item.title, pageType } });
 		},
 		detail: () => {
-			router.push({ path: '/detail', query: {title:item.title,pageType} });
+			router.push({ path: '/detail', query: { title: item.title, pageType } });
 		},
 	};
 	try {
@@ -90,7 +90,7 @@ const emit = defineEmits(['update:modelValue']);
 	width: 100%;
 	height: 100%;
 	display: flex;
-	padding-top: calc(var(--page-top) + 5.94vw);
+	padding-top: calc(var(--page-top) + 5.94vw + 1.67vw);
 	padding-left: var(--page-left);
 	background-color: var(--bg-color);
 	z-index: 2;

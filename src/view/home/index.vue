@@ -4,11 +4,16 @@
 		<div>
 			<router-link to="about">about</router-link>
 			<br />
-			<router-link to="protfolio">protfolio</router-link>
+			<input type="text" name="" id="">
 		</div>
 	</div>
 </template>
 
 <script setup></script>
 
-<style scoped></style>
+<style scoped>
+input{
+	border: 1px solid #ccc;
+	font-size: 30px;
+}
+</style>
