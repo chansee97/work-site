@@ -13,7 +13,7 @@
 			<div class="detail-arrow_left arrow" @click="toggleImage('left')"></div>
 			<div class="detail-arrow_right arrow" @click="toggleImage('right')"></div>
 		</div>
-		<div class="detail-title">{{ currentWorks.title }}</div>
+		<div class="detail-title">{{ currentWorks.wroks }}</div>
 		<div class="detail-btn-group">
 			<div class="info icon" @click="showInfo = !showInfo" v-if="currentWorks.info">
 				<transition name="fade-top">
@@ -46,7 +46,7 @@ const currentWorks = computed(() => {
 });
 
 function toggleImage(direction = 'right') {
-	const _no = Number(no)
+	const _no = Number(no);
 	const noResult = () => {
 		if (direction == 'right') {
 			return _no + 1 > max.value ? 0 : _no + 1;
@@ -76,18 +76,29 @@ function backWorksCatalog() {
 	display: flex;
 	justify-content: space-between;
 	.arrow {
-		background: url('@/assets/icon/arrow.svg') no-repeat;
 		background-position: center;
-		width: 3.2vw; // 32
+		width: 1.67vw; // 32
 		height: 5.21vw; // 100
 		cursor: pointer;
 		transition: all 0.3s ease;
+		position: relative;
+		&::before{
+			content: '';
+			position: absolute;
+			inset: -100px;
+		}
 	}
-	.detail-arrow_left:hover {
-		transform: translateX(-30px);
+	.detail-arrow_left {
+		background: url('@/assets/icon/left-arrow.svg') no-repeat;
+		&:hover {
+			transform: translateX(-30px);
+		}
 	}
-	.detail-arrow_right:hover {
-		transform: translateX(30px);
+	.detail-arrow_right {
+		background: url('@/assets/icon/right-arrow.svg') no-repeat;
+		&:hover {
+			transform: translateX(30px);
+		}
 	}
 }
 .detail-single-img {
