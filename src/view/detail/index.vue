@@ -1,25 +1,30 @@
 <template>
 	<div class="detail-container">
-		<div class="detail-single-img" v-if="!currentWorks.description">
-			<img :src="currentWorks.srcPath" />
+		<div class="detail-description">
+			<img :class="{ 'has-des': showDescription }" :src="currentWorks.srcPath" />
 		</div>
-		<div class="detail-description" v-else>
-			<div class="detail-description-warp scrollbar">
-				<p class="detail-description-content">{{ currentWorks.description }}</p>
+
+		<transition name="fade">
+			<div class="detail-arrow" v-if="!showDescription">
+				<div class="detail-arrow_left arrow" @click="toggleImage('left')"></div>
+				<div class="detail-arrow_right arrow" @click="toggleImage('right')"></div>
 			</div>
-			<img :src="currentWorks.srcPath" :alt="currentWorks.title" />
+		</transition>
+
+		<div class="detail-title" @mouseout="showDescription = false" @mouseover="showDescription = true">
+			<transition name="fade-slide">
+				<div class="detail-description-warp scrollbar" v-if="showDescription">
+					<p class="detail-description-content">{{ description }}</p>
+				</div>
+			</transition>
+			{{ currentWorks.wroks }}
 		</div>
-		<div class="detail-arrow">
-			<div class="detail-arrow_left arrow" @click="toggleImage('left')"></div>
-			<div class="detail-arrow_right arrow" @click="toggleImage('right')"></div>
-		</div>
-		<div class="detail-title">{{ currentWorks.wroks }}</div>
+
 		<div class="detail-btn-group">
-			<div class="info icon" @click="showInfo = !showInfo" v-if="currentWorks.info">
-				<transition name="fade-top">
-					<div class="info-content" v-if="showInfo" v-html="currentWorks.info"></div>
-				</transition>
-			</div>
+			<div class="info icon" @mouseout="showInfo = false" @mouseover="showInfo = true" v-if="currentWorks.info"></div>
+			<transition name="fade-top">
+				<div class="info-content" v-if="showInfo" v-html="currentWorks.info"></div>
+			</transition>
 			<div class="back icon" @click="backWorksCatalog"></div>
 		</div>
 	</div>
@@ -36,12 +41,15 @@ const router = useRouter();
 
 const { works, no } = route.query;
 const max = ref(0);
+const description = ref('');
 const showInfo = ref(false);
+const showDescription = ref(false);
 
 const currentWorks = computed(() => {
 	const defaultResult = { works, no };
 	const parent = worksConfig[works];
 	max.value = parent.max;
+	description.value = parent.description;
 	return parent?.children[no] ?? defaultResult;
 });
 
@@ -82,7 +90,7 @@ function backWorksCatalog() {
 		cursor: pointer;
 		transition: all 0.3s ease;
 		position: relative;
-		&::before{
+		&::before {
 			content: '';
 			position: absolute;
 			inset: -100px;
@@ -101,34 +109,26 @@ function backWorksCatalog() {
 		}
 	}
 }
-.detail-single-img {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	img {
-		max-height: 48vw; //972px
-	}
-}
 .detail-description {
 	height: 100%;
+	width: 100%;
+	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 14.32vw;
-	padding-left: var(--page-left);
+	&:has(.detail-description-warp) {
+		padding-left: var(--page-left);
+	}
 	img {
 		max-height: 48vw; //972px
-	}
-
-	.detail-description-warp {
-		width: 33.75vw;
-		max-height: 31.25vw;
-		height: fit-content;
-		overflow: auto;
-	}
-	.detail-description-content {
-		font-size: 18px;
-		line-height: 3em;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: all 0.3s ease-in-out;
+		transform-origin: left center;
+		&.has-des {
+			transform: translate(5.57vw, -50%) scale(0.8);
+		}
 	}
 }
 .detail-title {
@@ -137,6 +137,24 @@ function backWorksCatalog() {
 	bottom: var(--page-bottom);
 	left: var(--page-left);
 	cursor: pointer;
+	&::before {
+		content: '';
+		position: absolute;
+		inset: -50px;
+		z-index: -1;
+	}
+	.detail-description-warp {
+		position: absolute;
+		bottom: 50px;
+		width: 33.75vw;
+		max-height: 31.25vw;
+		height: fit-content;
+		overflow: auto;
+		.detail-description-content {
+			font-size: 18px;
+			line-height: 3em;
+		}
+	}
 }
 .detail-btn-group {
 	position: absolute;
@@ -153,14 +171,14 @@ function backWorksCatalog() {
 	.info {
 		background-image: url('@/assets/icon/info.svg');
 		position: relative;
-		.info-content {
-			font-size: 20px;
-			line-height: 2em;
-			position: absolute;
-			left: -11.56vw;
-			bottom: calc(100% + 1.88vw);
-			width: fit-content;
-		}
+	}
+	.info-content {
+		font-size: 20px;
+		line-height: 2em;
+		position: absolute;
+		left: -11.56vw;
+		bottom: calc(100% + 1.88vw);
+		width: fit-content;
 	}
 	.back {
 		background-image: url('@/assets/icon/back.svg');

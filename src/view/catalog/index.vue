@@ -61,6 +61,13 @@ function handleDetail(item, index) {
 	padding-left: 20vw;
 	height: 100%;
 }
+.scroll-wrap {
+	overflow: auto;
+	height: 60vh;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
 .img-content {
 	display: flex;
 	flex-wrap: wrap;
@@ -73,10 +80,6 @@ function handleDetail(item, index) {
 	.img-content {
 		flex-wrap: nowrap;
 		flex-direction: column;
-	}
-	.scroll-wrap {
-		overflow: auto;
-		height: 70vh;
 	}
 }
 </style>
