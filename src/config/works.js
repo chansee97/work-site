@@ -7,7 +7,7 @@ export const worksConfig = {
 		children: [
 			{
 				title: ' ',
-				srcPath: 'Slough/01.webp',
+				srcPath: 'Slough/01.jpg',
 				wroks: 'Slough',
 				info: 'Leg<br/>Cyanotype on watercolor paper<br/>(297cmx420cm)',
 				description: '',
@@ -15,14 +15,14 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/02.webp',
+				srcPath: 'Slough/02.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 25min<br/>(145cm x 200cm)',
 				pageType: 'detail',
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/03.webp',
+				srcPath: 'Slough/03.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on water color paper<br/>(297cmx420cm)',
 				description: '',
@@ -30,7 +30,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/04.webp',
+				srcPath: 'Slough/04.jpg',
 				wroks: 'Slough',
 				info: 'Back<br/>Cyanotype on watercolor paper<br/>(297cmx420cm)',
 				description: '',
@@ -38,7 +38,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/05.webp',
+				srcPath: 'Slough/05.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 22min<br/>(145cm x 200cm)',
 				description: '',
@@ -46,7 +46,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/06.webp',
+				srcPath: 'Slough/06.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -54,7 +54,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/07.webp',
+				srcPath: 'Slough/07.jpg',
 				wroks: 'Slough',
 				info: 'Leg <br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -62,7 +62,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/08.webp',
+				srcPath: 'Slough/08.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 18min<br/>(145cm x 200cm)',
 				description: '',
@@ -70,7 +70,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/09.webp',
+				srcPath: 'Slough/09.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -78,7 +78,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/10.webp',
+				srcPath: 'Slough/10.jpg',
 				wroks: 'Slough',
 				info: 'Head<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -86,7 +86,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/11.webp',
+				srcPath: 'Slough/11.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 15min<br/>(145cm x 200cm)',
 				description: '',
@@ -94,7 +94,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/12.webp',
+				srcPath: 'Slough/12.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -102,7 +102,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/13.webp',
+				srcPath: 'Slough/13.jpg',
 				wroks: 'Slough',
 				info: 'Back<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -110,7 +110,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/14.webp',
+				srcPath: 'Slough/14.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 22min<br/>(145cm x 200cm)',
 				description: '',
@@ -118,7 +118,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/15.webp',
+				srcPath: 'Slough/15.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -126,7 +126,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/16.webp',
+				srcPath: 'Slough/16.jpg',
 				wroks: 'Slough',
 				info: 'Back<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -134,7 +134,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/17.webp',
+				srcPath: 'Slough/17.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 25min<br/>(145cm x 200cm)',
 				description: '',
@@ -142,7 +142,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/18.webp',
+				srcPath: 'Slough/18.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -150,7 +150,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/19.webp',
+				srcPath: 'Slough/19.jpg',
 				wroks: 'Slough',
 				info: 'Hand<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -158,7 +158,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/20.webp',
+				srcPath: 'Slough/20.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 20min<br/>(145cm x 200cm)',
 				description: '',
@@ -166,7 +166,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/21.webp',
+				srcPath: 'Slough/21.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -174,7 +174,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/22.webp',
+				srcPath: 'Slough/22.jpg',
 				wroks: 'Slough',
 				info: 'Back<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -182,7 +182,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/23.webp',
+				srcPath: 'Slough/23.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 25min<br/>(145cm x 200cm)',
 				description: '',
@@ -190,7 +190,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/24.webp',
+				srcPath: 'Slough/24.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -198,7 +198,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/25.webp',
+				srcPath: 'Slough/25.jpg',
 				wroks: 'Slough',
 				info: 'Leg<br/>Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',
@@ -206,7 +206,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/26.webp',
+				srcPath: 'Slough/26.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on fabric, 17min<br/>(145cm x 200cm)',
 				description: '',
@@ -214,7 +214,7 @@ export const worksConfig = {
 			},
 			{
 				title: ' ',
-				srcPath: 'Slough/27.webp',
+				srcPath: 'Slough/27.jpg',
 				wroks: 'Slough',
 				info: 'Cyanotype on watercolor paper<br/>(297mm x 420mm)',
 				description: '',

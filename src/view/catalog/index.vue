@@ -3,11 +3,7 @@
 		<h1>{{ currentCatalog.title }}</h1>
 		<div class="scroll-wrap">
 			<div class="img-content">
-				<simg
-					v-for="(item, index) in currentCatalog.children"
-					:key="index"
-					:src="item.srcPath"
-					:title="item.title"
+				<simg v-for="(item, index) in currentCatalog.children" :key="index" :src="item.srcPath" :title="item.title"
 					@click="handleDetail(item, index)" />
 			</div>
 		</div>
@@ -58,16 +54,22 @@ function handleDetail(item, index) {
 <style lang="less" scoped>
 .page-container {
 	padding-top: var(--page-top);
-	padding-left: 20vw;
+	// padding-left:  clamp(var(--page-left), 7.5vw, 384px);
+	padding-left: var(--page-left);
 	height: 100%;
+}
+h1{
+	margin-left: clamp(120px, 11.88vw, 384px);
 }
 .scroll-wrap {
 	overflow: auto;
 	height: 60vh;
+	margin-left: 11.88vw;
 	&::-webkit-scrollbar {
 		display: none;
 	}
 }
+
 .img-content {
 	display: flex;
 	flex-wrap: wrap;
@@ -80,6 +82,9 @@ function handleDetail(item, index) {
 	.img-content {
 		flex-wrap: nowrap;
 		flex-direction: column;
+	}
+	.scroll-wrap{
+		margin-left: 0;
 	}
 }
 </style>

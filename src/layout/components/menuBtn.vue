@@ -13,8 +13,8 @@ function handleClick() {
 
 <style lang="less" scoped>
 .btn-menu {
-	width: 48px;
-	height: 32px;
+	width: 36px;
+	height: 24px;
 	position: fixed;
 	cursor: pointer;
 	background-image: url('@/assets/icon/menu.svg');

@@ -21,16 +21,8 @@ export const menuConfig = [
 		title: 'Works',
 		pageType: 'catalog',
 		children: [
-			{ title: 'work-11' },
-			{ title: 'work-12' },
-			{ title: 'work-13' },
-			{ title: 'work-14' },
-			{ title: 'work-15' },
-			{ title: 'work-16' },
-			{ title: 'work-17' },
-			{ title: 'work-18' },
-			{ title: 'work-19' },
-			{ title: 'work-20' },
+			{ title: 'fashion' },
+			{ title: '剧照' },
 		],
 	},
 	{

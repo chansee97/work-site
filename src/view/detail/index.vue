@@ -145,7 +145,7 @@ function backWorksCatalog() {
 	}
 	.detail-description-warp {
 		position: absolute;
-		bottom: 50px;
+		bottom: 100px;
 		width: 33.75vw;
 		max-height: 31.25vw;
 		height: fit-content;
@@ -173,7 +173,6 @@ function backWorksCatalog() {
 		position: relative;
 	}
 	.info-content {
-		font-size: 20px;
 		line-height: 2em;
 		position: absolute;
 		left: -11.56vw;

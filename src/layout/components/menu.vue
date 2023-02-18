@@ -106,7 +106,7 @@ const emit = defineEmits(['update:modelValue']);
 	.menu-item {
 		cursor: pointer;
 		width: fit-content;
-		font-size: 20px;
+		font-size: 16px;
 		&:hover,
 		&:active,
 		&.active {
