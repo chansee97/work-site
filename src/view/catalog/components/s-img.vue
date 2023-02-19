@@ -17,8 +17,10 @@ const props = defineProps({
 	width: fit-content;
 	cursor: pointer;
 	img {
-		width: 14.06vw;
-		height: 16.67vh;
+		// width: 14.06vw;
+		// height: 16.67vh;
+		max-width: 180px;
+		max-height: 180px;
 		object-fit: cover;
 		transition: opacity ease .5s;
 		will-change: opacity;

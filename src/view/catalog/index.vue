@@ -73,8 +73,11 @@ h1{
 .img-content {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--row-gap) var(--col-gap);
-	width: fit-content;
+	width: 1280px;
+	> * {
+		margin-right: var(--col-gap);
+		margin-bottom: var(--row-gap);
+	}
 }
 
 /* 设备宽度大于 320px 小于 640px */
