@@ -1,6 +1,5 @@
 :root {
-	--menu-line-height: 1px;
-	--menu-item-gap: 4.95vw;
+	--menu-item-height: 105px;
 
 	--text-color: #000;
 	--text-color-active: #999;

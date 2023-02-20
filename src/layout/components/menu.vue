@@ -96,17 +96,14 @@ const emit = defineEmits(['update:modelValue']);
 	z-index: 2;
 }
 .menu-warp {
-	display: flex;
-	flex-direction: column;
-	gap: var(--menu-item-gap);
 	height: fit-content;
 	max-height: 100%;
 	width: 18.75vw;
 
 	.menu-item {
 		cursor: pointer;
-		width: fit-content;
 		font-size: 16px;
+		height: var(--menu-item-height);
 		&:hover,
 		&:active,
 		&.active {

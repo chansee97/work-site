@@ -54,16 +54,17 @@ function handleDetail(item, index) {
 <style lang="less" scoped>
 .page-container {
 	padding-top: var(--page-top);
-	// padding-left:  clamp(var(--page-left), 7.5vw, 384px);
 	padding-left: var(--page-left);
 	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 h1{
 	margin-left: clamp(120px, 11.88vw, 384px);
 }
 .scroll-wrap {
 	overflow: auto;
-	height: 60vh;
+	flex:1;
 	margin-left: 11.88vw;
 	&::-webkit-scrollbar {
 		display: none;
